@@ -1,20 +1,24 @@
 {
     "account.info": {
+        "description": "Retrieve information about the current account.",
         "method": "get",
         "params": [],
         "path": "/v1/account/info"
     },
     "app.list": {
+        "description": "Retrieve a list of available applications. These refer to applications that can be launched when creating a Vultr VPS.",
         "method": "get",
         "params": [],
         "path": "/v1/app/list"
     },
     "auth.info": {
+        "description": "Retrieve information about the current API key.",
         "method": "get",
         "params": [],
         "path": "/v1/auth/info"
     },
     "backup.list": {
+        "description": "List all backups on the current account.",
         "method": "get",
         "params": [
             {
@@ -33,6 +37,7 @@
         "path": "/v1/backup/list"
     },
     "baremetal.app_change": {
+        "description": "Reinstalls the bare metal server to a different Vultr one-click application. All data will be permanently lost.",
         "method": "post",
         "params": [
             {
@@ -51,6 +56,7 @@
         "path": "/v1/baremetal/app_change"
     },
     "baremetal.app_change_list": {
+        "description": "Retrieves a list of Vultr one-click applications to which a bare metal server can be changed. Always check against this list before trying to switch applications because it is not possible to switch between every application combination.",
         "method": "get",
         "params": [
             {
@@ -63,11 +69,13 @@
         "path": "/v1/baremetal/app_change_list"
     },
     "baremetal.bandwidth": {
+        "description": "Get the bandwidth used by a bare metal server.",
         "method": "get",
         "params": [],
         "path": "/v1/baremetal/bandwidth"
     },
     "baremetal.create": {
+        "description": "Create a new bare metal server. You will start being billed for this immediately. The response only contains the SUBID for the new machine.",
         "method": "post",
         "params": [
             {
@@ -158,6 +166,7 @@
         "path": "/v1/baremetal/create"
     },
     "baremetal.destroy": {
+        "description": "Destroy (delete) a bare metal server. All data will be permanently lost, and the IP address will be released. There is no going back from this call.",
         "method": "post",
         "params": [
             {
@@ -170,6 +179,7 @@
         "path": "/v1/baremetal/destroy"
     },
     "baremetal.get_app_info": {
+        "description": "Retrieves the application information for a bare metal server.",
         "method": "get",
         "params": [
             {
@@ -182,6 +192,7 @@
         "path": "/v1/baremetal/get_app_info"
     },
     "baremetal.get_user_data": {
+        "description": "Retrieves the (base64 encoded) user-data for this subscription.",
         "method": "get",
         "params": [
             {
@@ -194,6 +205,7 @@
         "path": "/v1/baremetal/get_user_data"
     },
     "baremetal.halt": {
+        "description": "Halt a bare metal server. This is a hard power off, meaning that the power to the machine is severed. The data on the machine will not be modified, and you will still be billed for the machine. To completely delete a machine, see v1/baremetal/destroy.",
         "method": "post",
         "params": [
             {
@@ -206,6 +218,7 @@
         "path": "/v1/baremetal/halt"
     },
     "baremetal.ipv6_enable": {
+        "description": "Enables IPv6 networking on a bare metal server by assigning an IPv6 subnet to it. The server will not be rebooted when the subnet is assigned. It is possible to check whether or not IPv6 networking has been enabled with v1/baremetal/list_ipv6.",
         "method": "post",
         "params": [
             {
@@ -218,6 +231,7 @@
         "path": "/v1/baremetal/ipv6_enable"
     },
     "baremetal.label_set": {
+        "description": "Set the label of a bare metal server.",
         "method": "post",
         "params": [
             {
@@ -236,6 +250,7 @@
         "path": "/v1/baremetal/label_set"
     },
     "baremetal.list": {
+        "description": "List all bare metal servers on the current account. This includes both pending and active servers.",
         "method": "get",
         "params": [
             {
@@ -266,6 +281,7 @@
         "path": "/v1/baremetal/list"
     },
     "baremetal.list_ipv4": {
+        "description": "List the IPv4 information of a bare metal server. IP information is only available for bare metal servers in the &quot;active&quot; state.",
         "method": "get",
         "params": [
             {
@@ -278,6 +294,7 @@
         "path": "/v1/baremetal/list_ipv4"
     },
     "baremetal.list_ipv6": {
+        "description": "List the IPv6 information of a bare metal server. IP information is only available for bare metal servers in the &quot;active&quot; state. If the bare metal server does not have IPv6 enabled, then an empty array is returned.",
         "method": "get",
         "params": [
             {
@@ -290,6 +307,7 @@
         "path": "/v1/baremetal/list_ipv6"
     },
     "baremetal.os_change": {
+        "description": "Changes the bare metal server to a different operating system. All data will be permanently lost.",
         "method": "post",
         "params": [
             {
@@ -308,6 +326,7 @@
         "path": "/v1/baremetal/os_change"
     },
     "baremetal.os_change_list": {
+        "description": "Retrieves a list of operating systems to which a bare metal server can be changed. Always check against this list before trying to switch operating systems because it is not possible to switch between every operating system combination.",
         "method": "get",
         "params": [
             {
@@ -320,6 +339,7 @@
         "path": "/v1/baremetal/os_change_list"
     },
     "baremetal.reboot": {
+        "description": "Reboot a bare metal server. This is a hard reboot, which means that the server is powered off, then back on.",
         "method": "post",
         "params": [
             {
@@ -332,6 +352,7 @@
         "path": "/v1/baremetal/reboot"
     },
     "baremetal.reinstall": {
+        "description": "Reinstall the operating system on a bare metal server. All data will be permanently lost, but the IP address will remain the same. There is no going back from this call.",
         "method": "post",
         "params": [
             {
@@ -344,6 +365,7 @@
         "path": "/v1/baremetal/reinstall"
     },
     "baremetal.set_user_data": {
+        "description": "Sets the user-data for this subscription. User-data is a generic data store, which some provisioning tools and cloud operating systems use as a configuration file. It is generally consumed only once after an instance has been launched, but individual needs may vary.",
         "method": "post",
         "params": [
             {
@@ -362,6 +384,7 @@
         "path": "/v1/baremetal/set_user_data"
     },
     "baremetal.tag_set": {
+        "description": "Set the tag of a bare metal server.",
         "method": "post",
         "params": [
             {
@@ -380,6 +403,7 @@
         "path": "/v1/baremetal/tag_set"
     },
     "block.attach": {
+        "description": "Attach a block storage subscription to a VPS subscription. The instance will be restarted. The block storage volume must not be attached to any other VPS subscriptions for this to work.",
         "method": "post",
         "params": [
             {
@@ -404,6 +428,7 @@
         "path": "/v1/block/attach"
     },
     "block.create": {
+        "description": "Create a block storage subscription.",
         "method": "post",
         "params": [
             {
@@ -428,6 +453,7 @@
         "path": "/v1/block/create"
     },
     "block.delete": {
+        "description": "Delete a block storage subscription.  All data will be permanently lost. There is no going back from this call.",
         "method": "post",
         "params": [
             {
@@ -440,6 +466,7 @@
         "path": "/v1/block/delete"
     },
     "block.detach": {
+        "description": "Detach a block storage subscription from the currently attached instance. The instance will be restarted.",
         "method": "post",
         "params": [
             {
@@ -458,6 +485,7 @@
         "path": "/v1/block/detach"
     },
     "block.label_set": {
+        "description": "Set the label of a block storage subscription.",
         "method": "post",
         "params": [
             {
@@ -476,6 +504,7 @@
         "path": "/v1/block/label_set"
     },
     "block.list": {
+        "description": "Retrieve a list of any active block storage subscriptions on this account.",
         "method": "get",
         "params": [
             {
@@ -488,6 +517,7 @@
         "path": "/v1/block/list"
     },
     "block.resize": {
+        "description": "Resize the block storage volume to a new size.",
         "method": "post",
         "params": [
             {
@@ -506,6 +536,7 @@
         "path": "/v1/block/resize"
     },
     "dns.create_domain": {
+        "description": "Create a domain name in DNS.",
         "method": "post",
         "params": [
             {
@@ -524,6 +555,7 @@
         "path": "/v1/dns/create_domain"
     },
     "dns.create_record": {
+        "description": "Add a DNS record.",
         "method": "post",
         "params": [
             {
@@ -566,6 +598,7 @@
         "path": "/v1/dns/create_record"
     },
     "dns.delete_domain": {
+        "description": "Delete a domain name and all associated records.",
         "method": "post",
         "params": [
             {
@@ -578,6 +611,7 @@
         "path": "/v1/dns/delete_domain"
     },
     "dns.delete_record": {
+        "description": "Delete an individual DNS record.",
         "method": "post",
         "params": [
             {
@@ -596,6 +630,7 @@
         "path": "/v1/dns/delete_record"
     },
     "dns.dnssec_enable": {
+        "description": "Enable or disable DNSSEC for a domain.",
         "method": "post",
         "params": [
             {
@@ -614,6 +649,7 @@
         "path": "/v1/dns/dnssec_enable"
     },
     "dns.dnssec_info": {
+        "description": "Get the DNSSEC keys (if enabled) for a domain.",
         "method": "get",
         "params": [
             {
@@ -626,11 +662,13 @@
         "path": "/v1/dns/dnssec_info"
     },
     "dns.list": {
+        "description": "List all domains associated with the current account.",
         "method": "get",
         "params": [],
         "path": "/v1/dns/list"
     },
     "dns.records": {
+        "description": "List all the records associated with a particular domain.",
         "method": "get",
         "params": [
             {
@@ -643,6 +681,7 @@
         "path": "/v1/dns/records"
     },
     "dns.soa_info": {
+        "description": "Get the SOA record information for a domain.",
         "method": "get",
         "params": [
             {
@@ -655,6 +694,7 @@
         "path": "/v1/dns/soa_info"
     },
     "dns.soa_update": {
+        "description": "Update the SOA record information for a domain.",
         "method": "post",
         "params": [
             {
@@ -679,6 +719,7 @@
         "path": "/v1/dns/soa_update"
     },
     "dns.update_record": {
+        "description": "Update a DNS record.",
         "method": "post",
         "params": [
             {
@@ -721,6 +762,7 @@
         "path": "/v1/dns/update_record"
     },
     "firewall.group_create": {
+        "description": "Create a new firewall group on the current account.",
         "method": "post",
         "params": [
             {
@@ -733,6 +775,7 @@
         "path": "/v1/firewall/group_create"
     },
     "firewall.group_delete": {
+        "description": "Delete a firewall group. Use this function with caution because the firewall group being deleted will be detached from all servers. This can result in open ports accessible to the internet.",
         "method": "post",
         "params": [
             {
@@ -745,6 +788,7 @@
         "path": "/v1/firewall/group_delete"
     },
     "firewall.group_list": {
+        "description": "List all firewall groups on the current account.",
         "method": "get",
         "params": [
             {
@@ -757,6 +801,7 @@
         "path": "/v1/firewall/group_list"
     },
     "firewall.group_set_description": {
+        "description": "Change the description on a firewall group.",
         "method": "post",
         "params": [
             {
@@ -775,6 +820,7 @@
         "path": "/v1/firewall/group_set_description"
     },
     "firewall.rule_create": {
+        "description": "Create a rule in a firewall group.",
         "method": "post",
         "params": [
             {
@@ -835,6 +881,7 @@
         "path": "/v1/firewall/rule_create"
     },
     "firewall.rule_delete": {
+        "description": "Delete a rule in a firewall group.",
         "method": "post",
         "params": [
             {
@@ -853,6 +900,7 @@
         "path": "/v1/firewall/rule_delete"
     },
     "firewall.rule_list": {
+        "description": "List the rules in a firewall group.",
         "method": "get",
         "params": [
             {
@@ -877,6 +925,7 @@
         "path": "/v1/firewall/rule_list"
     },
     "iso.create_from_url": {
+        "description": "Create a new ISO image on the current account. The ISO image will be downloaded from a given URL. Download status can be checked with the v1/iso/list call.",
         "method": "post",
         "params": [
             {
@@ -889,6 +938,7 @@
         "path": "/v1/iso/create_from_url"
     },
     "iso.destroy": {
+        "description": "Destroy (delete) an ISO image. There is no going back from this call.",
         "method": "post",
         "params": [
             {
@@ -901,16 +951,19 @@
         "path": "/v1/iso/destroy"
     },
     "iso.list": {
+        "description": "List all ISOs currently available on this account.",
         "method": "get",
         "params": [],
         "path": "/v1/iso/list"
     },
     "iso.list_public": {
+        "description": "List public ISOs offered in the Vultr ISO library.",
         "method": "get",
         "params": [],
         "path": "/v1/iso/list_public"
     },
     "loadbalancer.conf_info": {
+        "description": "",
         "method": "get",
         "params": [
             {
@@ -923,6 +976,7 @@
         "path": "/v1/loadbalancer/conf_info"
     },
     "loadbalancer.create": {
+        "description": "Create a load balancer subscription.",
         "method": "post",
         "params": [
             {
@@ -989,6 +1043,7 @@
         "path": "/v1/loadbalancer/create"
     },
     "loadbalancer.destroy": {
+        "description": "Destroy a load balancer subscription. All data will be permanently lost. Web traffic passing through the load balancer will be abruptly terminated. There is no going back from this call.",
         "method": "post",
         "params": [
             {
@@ -1001,6 +1056,7 @@
         "path": "/v1/loadbalancer/destroy"
     },
     "loadbalancer.forward_rule_create": {
+        "description": "Create a new forwarding rule.",
         "method": "post",
         "params": [
             {
@@ -1037,6 +1093,7 @@
         "path": "/v1/loadbalancer/forward_rule_create"
     },
     "loadbalancer.forward_rule_delete": {
+        "description": "Remove a forwarding rule.",
         "method": "post",
         "params": [
             {
@@ -1055,6 +1112,7 @@
         "path": "/v1/loadbalancer/forward_rule_delete"
     },
     "loadbalancer.forward_rule_list": {
+        "description": "List the forwarding rules of a load balancer subscription.",
         "method": "get",
         "params": [
             {
@@ -1067,6 +1125,7 @@
         "path": "/v1/loadbalancer/forward_rule_list"
     },
     "loadbalancer.generic_info": {
+        "description": "Retrieve the generic configuration of a load balancer subscription.",
         "method": "get",
         "params": [
             {
@@ -1079,6 +1138,7 @@
         "path": "/v1/loadbalancer/generic_info"
     },
     "loadbalancer.generic_update": {
+        "description": "Update the generic configuration of a load balancer subscription.",
         "method": "post",
         "params": [
             {
@@ -1127,6 +1187,7 @@
         "path": "/v1/loadbalancer/generic_update"
     },
     "loadbalancer.health_check_info": {
+        "description": "Retrieve the health checking configuration of a load balancer subscription.",
         "method": "get",
         "params": [
             {
@@ -1139,6 +1200,7 @@
         "path": "/v1/loadbalancer/health_check_info"
     },
     "loadbalancer.health_check_update": {
+        "description": "Update the health checking configuration of a load balancer subscription.",
         "method": "post",
         "params": [
             {
@@ -1193,6 +1255,7 @@
         "path": "/v1/loadbalancer/health_check_update"
     },
     "loadbalancer.instance_attach": {
+        "description": "Attach an instance to a load balancer subscription.",
         "method": "post",
         "params": [
             {
@@ -1211,6 +1274,7 @@
         "path": "/v1/loadbalancer/instance_attach"
     },
     "loadbalancer.instance_detach": {
+        "description": "Detach an instance to a load balancer subscription.",
         "method": "post",
         "params": [
             {
@@ -1229,6 +1293,7 @@
         "path": "/v1/loadbalancer/instance_detach"
     },
     "loadbalancer.instance_list": {
+        "description": "List the instances attached to a load balancer subscription.",
         "method": "get",
         "params": [
             {
@@ -1241,6 +1306,7 @@
         "path": "/v1/loadbalancer/instance_list"
     },
     "loadbalancer.label_set": {
+        "description": "Set the label of a load balancer subscription.",
         "method": "post",
         "params": [
             {
@@ -1259,6 +1325,7 @@
         "path": "/v1/loadbalancer/label_set"
     },
     "loadbalancer.list": {
+        "description": "List all load balancer subscriptions on the current account. This includes both pending and active subscriptions.",
         "method": "get",
         "params": [
             {
@@ -1271,6 +1338,7 @@
         "path": "/v1/loadbalancer/list"
     },
     "loadbalancer.ssl_add": {
+        "description": "Add a SSL certificate to a load balancer.",
         "method": "post",
         "params": [
             {
@@ -1295,6 +1363,7 @@
         "path": "/v1/loadbalancer/ssl_add"
     },
     "loadbalancer.ssl_info": {
+        "description": "Retrieve whether or not your load balancer subscription has an SSL cert attached.",
         "method": "get",
         "params": [
             {
@@ -1307,6 +1376,7 @@
         "path": "/v1/loadbalancer/ssl_info"
     },
     "loadbalancer.ssl_remove": {
+        "description": "Remove a SSL certificate to a load balancer.",
         "method": "post",
         "params": [
             {
@@ -1319,6 +1389,7 @@
         "path": "/v1/loadbalancer/ssl_remove"
     },
     "network.create": {
+        "description": "Create a new private network. A private network can only be used at the location for which it was created.",
         "method": "post",
         "params": [
             {
@@ -1349,6 +1420,7 @@
         "path": "/v1/network/create"
     },
     "network.destroy": {
+        "description": "Destroy (delete) a private network. Before destroying, a network must be disabled from all instances. See /v1/server/private_network_disable.",
         "method": "post",
         "params": [
             {
@@ -1361,11 +1433,13 @@
         "path": "/v1/network/destroy"
     },
     "network.list": {
+        "description": "List all private networks on the current account.",
         "method": "get",
         "params": [],
         "path": "/v1/network/list"
     },
     "objectstorage.create": {
+        "description": "Create an object storage subscription.",
         "method": "post",
         "params": [
             {
@@ -1384,6 +1458,7 @@
         "path": "/v1/objectstorage/create"
     },
     "objectstorage.destroy": {
+        "description": "Destroy an object storage subscription. All objects will be permanently deleted. There is no going back from this call.",
         "method": "post",
         "params": [
             {
@@ -1396,6 +1471,7 @@
         "path": "/v1/objectstorage/destroy"
     },
     "objectstorage.label_set": {
+        "description": "Set the label of an object storage subscription.",
         "method": "post",
         "params": [
             {
@@ -1414,6 +1490,7 @@
         "path": "/v1/objectstorage/label_set"
     },
     "objectstorage.list": {
+        "description": "List all object storage subscriptions on the current account. This includes both pending and active subscriptions.",
         "method": "get",
         "params": [
             {
@@ -1438,11 +1515,13 @@
         "path": "/v1/objectstorage/list"
     },
     "objectstorage.list_cluster": {
+        "description": "List object storage clusters.",
         "method": "get",
         "params": [],
         "path": "/v1/objectstorage/list_cluster"
     },
     "objectstorage.s3key_regenerate": {
+        "description": "Regenerate the S3 API keys of an object storage subscription.",
         "method": "post",
         "params": [
             {
@@ -1455,11 +1534,13 @@
         "path": "/v1/objectstorage/s3key_regenerate"
     },
     "os.list": {
+        "description": "Retrieve a list of available operating systems.  If the &quot;windows&quot; flag is true, a Windows license will be included with the instance, which will increase the cost.",
         "method": "get",
         "params": [],
         "path": "/v1/os/list"
     },
     "plans.list": {
+        "description": "Retrieve a list of all active plans. Plans that are no longer available will not be shown.",
         "method": "get",
         "params": [
             {
@@ -1472,26 +1553,31 @@
         "path": "/v1/plans/list"
     },
     "plans.list_baremetal": {
+        "description": "Retrieve a list of all active bare metal plans. Plans that are no longer available will not be shown.",
         "method": "get",
         "params": [],
         "path": "/v1/plans/list_baremetal"
     },
     "plans.list_vc2": {
+        "description": "Retrieve a list of all active vc2 plans. Plans that are no longer available will not be shown.",
         "method": "get",
         "params": [],
         "path": "/v1/plans/list_vc2"
     },
     "plans.list_vc2z": {
+        "description": "Retrieve a list of all active high frequency CPU plans. Plans that are no longer available will not be shown.",
         "method": "get",
         "params": [],
         "path": "/v1/plans/list_vc2z"
     },
     "plans.list_vdc2": {
+        "description": "Retrieve a list of all active vdc2 plans. Plans that are no longer available will not be shown.",
         "method": "get",
         "params": [],
         "path": "/v1/plans/list_vdc2"
     },
     "regions.availability": {
+        "description": "Retrieve a list of the VPSPLANIDs currently available in this location.",
         "method": "get",
         "params": [
             {
@@ -1510,6 +1596,7 @@
         "path": "/v1/regions/availability"
     },
     "regions.availability_baremetal": {
+        "description": "Retrieve a list of the METALPLANIDs currently available in this location.",
         "method": "get",
         "params": [
             {
@@ -1522,6 +1609,7 @@
         "path": "/v1/regions/availability_baremetal"
     },
     "regions.availability_vc2": {
+        "description": "Retrieve a list of the vc2 VPSPLANIDs currently available in this location.",
         "method": "get",
         "params": [
             {
@@ -1534,6 +1622,7 @@
         "path": "/v1/regions/availability_vc2"
     },
     "regions.availability_vdc2": {
+        "description": "Retrieve a list of the vdc2 VPSPLANIDs currently available in this location.",
         "method": "get",
         "params": [
             {
@@ -1546,6 +1635,7 @@
         "path": "/v1/regions/availability_vdc2"
     },
     "regions.list": {
+        "description": "Retrieve a list of all active regions. Note that just because a region is listed here, does not mean that there is room for new servers.",
         "method": "get",
         "params": [
             {
@@ -1558,6 +1648,7 @@
         "path": "/v1/regions/list"
     },
     "reservedip.attach": {
+        "description": "Attach a reserved IP to an existing subscription.",
         "method": "post",
         "params": [
             {
@@ -1576,6 +1667,7 @@
         "path": "/v1/reservedip/attach"
     },
     "reservedip.convert": {
+        "description": "Convert an existing IP on a subscription to a reserved IP. Returns the SUBID of the newly created reserved IP.",
         "method": "post",
         "params": [
             {
@@ -1600,6 +1692,7 @@
         "path": "/v1/reservedip/convert"
     },
     "reservedip.create": {
+        "description": "Create a new reserved IP. Reserved IPs can only be used within the same datacenter for which they were created.",
         "method": "post",
         "params": [
             {
@@ -1624,6 +1717,7 @@
         "path": "/v1/reservedip/create"
     },
     "reservedip.destroy": {
+        "description": "Remove a reserved IP from your account. After making this call, you will not be able to recover the IP address.",
         "method": "post",
         "params": [
             {
@@ -1636,6 +1730,7 @@
         "path": "/v1/reservedip/destroy"
     },
     "reservedip.detach": {
+        "description": "Detach a reserved IP from an existing subscription.",
         "method": "post",
         "params": [
             {
@@ -1654,11 +1749,13 @@
         "path": "/v1/reservedip/detach"
     },
     "reservedip.list": {
+        "description": "List all the active reserved IPs on this account. The &quot;subnet_size&quot; field is the size of the network assigned to this subscription. This will typically be a /64 for IPv6, or a /32 for IPv4.",
         "method": "get",
         "params": [],
         "path": "/v1/reservedip/list"
     },
     "server.app_change": {
+        "description": "Changes the virtual machine to a different application. All data will be permanently lost.",
         "method": "post",
         "params": [
             {
@@ -1677,6 +1774,7 @@
         "path": "/v1/server/app_change"
     },
     "server.app_change_list": {
+        "description": "Retrieves a list of applications to which a virtual machine can be changed. Always check against this list before trying to switch applications because it is not possible to switch between every application combination.",
         "method": "get",
         "params": [
             {
@@ -1689,6 +1787,7 @@
         "path": "/v1/server/app_change_list"
     },
     "server.backup_disable": {
+        "description": "Disables automatic backups on a server. Once disabled, backups can only be enabled again by customer support.",
         "method": "post",
         "params": [
             {
@@ -1701,6 +1800,7 @@
         "path": "/v1/server/backup_disable"
     },
     "server.backup_enable": {
+        "description": "Enables automatic backups on a server.",
         "method": "post",
         "params": [
             {
@@ -1713,6 +1813,7 @@
         "path": "/v1/server/backup_enable"
     },
     "server.backup_get_schedule": {
+        "description": "Retrieves the backup schedule for a server. All time values are in UTC.",
         "method": "post",
         "params": [
             {
@@ -1725,6 +1826,7 @@
         "path": "/v1/server/backup_get_schedule"
     },
     "server.backup_set_schedule": {
+        "description": "Sets the backup schedule for a server. All time values are in UTC.",
         "method": "post",
         "params": [
             {
@@ -1761,6 +1863,7 @@
         "path": "/v1/server/backup_set_schedule"
     },
     "server.bandwidth": {
+        "description": "Get the bandwidth used by a virtual machine.",
         "method": "get",
         "params": [
             {
@@ -1773,6 +1876,7 @@
         "path": "/v1/server/bandwidth"
     },
     "server.create": {
+        "description": "Create a new virtual machine. You will start being billed for this immediately. The response only contains the SUBID for the new machine.",
         "method": "post",
         "params": [
             {
@@ -1905,6 +2009,7 @@
         "path": "/v1/server/create"
     },
     "server.create_ipv4": {
+        "description": "Add a new IPv4 address to a server. You will start being billed for this immediately. The server will be rebooted unless you specify otherwise. You must reboot the server before the IPv4 address can be configured.",
         "method": "post",
         "params": [
             {
@@ -1923,6 +2028,7 @@
         "path": "/v1/server/create_ipv4"
     },
     "server.destroy": {
+        "description": "Destroy (delete) a virtual machine. All data will be permanently lost, and the IP address will be released. There is no going back from this call.",
         "method": "post",
         "params": [
             {
@@ -1935,6 +2041,7 @@
         "path": "/v1/server/destroy"
     },
     "server.destroy_ipv4": {
+        "description": "Removes a secondary IPv4 address from a server. Your server will be hard-restarted. We suggest halting the machine gracefully before removing IPs.",
         "method": "post",
         "params": [
             {
@@ -1953,6 +2060,7 @@
         "path": "/v1/server/destroy_ipv4"
     },
     "server.firewall_group_set": {
+        "description": "Set, change, or remove the firewall group currently applied to a server.",
         "method": "post",
         "params": [
             {
@@ -1971,6 +2079,7 @@
         "path": "/v1/server/firewall_group_set"
     },
     "server.get_app_info": {
+        "description": "Retrieves the application information for this subscription.",
         "method": "get",
         "params": [
             {
@@ -1983,6 +2092,7 @@
         "path": "/v1/server/get_app_info"
     },
     "server.get_user_data": {
+        "description": "Retrieves the (base64 encoded) user-data for this subscription.",
         "method": "get",
         "params": [
             {
@@ -1995,6 +2105,7 @@
         "path": "/v1/server/get_user_data"
     },
     "server.halt": {
+        "description": "Halt a virtual machine. This is a hard power off (basically, unplugging the machine). The data on the machine will not be modified, and you will still be billed for the machine. To completely delete a machine, see v1/server/destroy.",
         "method": "post",
         "params": [
             {
@@ -2007,6 +2118,7 @@
         "path": "/v1/server/halt"
     },
     "server.ipv6_enable": {
+        "description": "Enables IPv6 networking on a server by assigning an IPv6 subnet to it. The server will be automatically rebooted to complete the request. No action occurs if IPv6 networking was already enabled. It is possible to check whether or not IPv6 networking has been enabled with v1/server/list_ipv6.",
         "method": "post",
         "params": [
             {
@@ -2019,6 +2131,7 @@
         "path": "/v1/server/ipv6_enable"
     },
     "server.iso_attach": {
+        "description": "Attach an ISO and reboot the server.",
         "method": "post",
         "params": [
             {
@@ -2037,6 +2150,7 @@
         "path": "/v1/server/iso_attach"
     },
     "server.iso_detach": {
+        "description": "Detach the currently mounted ISO and reboot the server.",
         "method": "post",
         "params": [
             {
@@ -2049,6 +2163,7 @@
         "path": "/v1/server/iso_detach"
     },
     "server.iso_status": {
+        "description": "Retrieve the current ISO state for a given subscription. The returned state may be one of: ready | isomounting | isomounted. ISOID will only be set when the mounted ISO exists in your library ( see /v1/iso/list ). Otherwise, it will read &quot;0&quot;.",
         "method": "get",
         "params": [
             {
@@ -2061,6 +2176,7 @@
         "path": "/v1/server/iso_status"
     },
     "server.label_set": {
+        "description": "Set the label of a virtual machine.",
         "method": "post",
         "params": [
             {
@@ -2079,6 +2195,7 @@
         "path": "/v1/server/label_set"
     },
     "server.list": {
+        "description": "List all active or pending virtual machines on the current account.",
         "method": "get",
         "params": [
             {
@@ -2109,6 +2226,7 @@
         "path": "/v1/server/list"
     },
     "server.list_ipv4": {
+        "description": "List the IPv4 information of a virtual machine. IP information is only available for virtual machines in the &quot;active&quot; state.",
         "method": "get",
         "params": [
             {
@@ -2127,6 +2245,7 @@
         "path": "/v1/server/list_ipv4"
     },
     "server.list_ipv6": {
+        "description": "List the IPv6 information of a virtual machine. IP information is only available for virtual machines in the &quot;active&quot; state. If the virtual machine does not have IPv6 enabled, then an empty array is returned.",
         "method": "get",
         "params": [
             {
@@ -2139,6 +2258,7 @@
         "path": "/v1/server/list_ipv6"
     },
     "server.neighbors": {
+        "description": "Determine what other subscriptions are hosted on the same physical host as a given subscription.",
         "method": "get",
         "params": [
             {
@@ -2151,6 +2271,7 @@
         "path": "/v1/server/neighbors"
     },
     "server.os_change": {
+        "description": "Changes the virtual machine to a different operating system. All data will be permanently lost.",
         "method": "post",
         "params": [
             {
@@ -2169,6 +2290,7 @@
         "path": "/v1/server/os_change"
     },
     "server.os_change_list": {
+        "description": "Retrieves a list of operating systems to which a virtual machine can be changed. Always check against this list before trying to switch operating systems because it is not possible to switch between every operating system combination.",
         "method": "get",
         "params": [
             {
@@ -2181,6 +2303,7 @@
         "path": "/v1/server/os_change_list"
     },
     "server.private_network_disable": {
+        "description": "Removes a private network from a server. The server will be automatically rebooted to complete the request.",
         "method": "post",
         "params": [
             {
@@ -2199,6 +2322,7 @@
         "path": "/v1/server/private_network_disable"
     },
     "server.private_network_enable": {
+        "description": "Enables private networking on a server. The server will be automatically rebooted to complete the request. No action occurs if private networking was already enabled. It is possible to check whether or not private networking has been enabled with v1/server/list_ipv4.",
         "method": "post",
         "params": [
             {
@@ -2217,6 +2341,7 @@
         "path": "/v1/server/private_network_enable"
     },
     "server.private_networks": {
+        "description": "List private networks attached to a particular server.",
         "method": "get",
         "params": [
             {
@@ -2229,6 +2354,7 @@
         "path": "/v1/server/private_networks"
     },
     "server.reboot": {
+        "description": "Reboot a virtual machine. This is a hard reboot (basically, unplugging the machine).",
         "method": "post",
         "params": [
             {
@@ -2241,6 +2367,7 @@
         "path": "/v1/server/reboot"
     },
     "server.reinstall": {
+        "description": "Reinstall the operating system on a virtual machine. All data will be permanently lost, but the IP address will remain the same. There is no going back from this call.",
         "method": "post",
         "params": [
             {
@@ -2259,6 +2386,7 @@
         "path": "/v1/server/reinstall"
     },
     "server.restore_backup": {
+        "description": "Restore the specified backup to the virtual machine. Any data already on the virtual machine will be lost.",
         "method": "post",
         "params": [
             {
@@ -2277,6 +2405,7 @@
         "path": "/v1/server/restore_backup"
     },
     "server.restore_snapshot": {
+        "description": "Restore the specified snapshot to the virtual machine. Any data already on the virtual machine will be lost.",
         "method": "post",
         "params": [
             {
@@ -2295,6 +2424,7 @@
         "path": "/v1/server/restore_snapshot"
     },
     "server.reverse_default_ipv4": {
+        "description": "Set a reverse DNS entry for an IPv4 address of a virtual machine to the original setting. Upon success, DNS changes may take 6-12 hours to become active.",
         "method": "post",
         "params": [
             {
@@ -2313,6 +2443,7 @@
         "path": "/v1/server/reverse_default_ipv4"
     },
     "server.reverse_delete_ipv6": {
+        "description": "Remove a reverse DNS entry for an IPv6 address of a virtual machine. Upon success, DNS changes may take 6-12 hours to become active.",
         "method": "post",
         "params": [
             {
@@ -2331,6 +2462,7 @@
         "path": "/v1/server/reverse_delete_ipv6"
     },
     "server.reverse_list_ipv6": {
+        "description": "List the IPv6 reverse DNS entries of a virtual machine. Reverse DNS entries are only available for virtual machines in the &quot;active&quot; state. If the virtual machine does not have IPv6 enabled, then an empty array is returned.",
         "method": "get",
         "params": [
             {
@@ -2343,6 +2475,7 @@
         "path": "/v1/server/reverse_list_ipv6"
     },
     "server.reverse_set_ipv4": {
+        "description": "Set a reverse DNS entry for an IPv4 address of a virtual machine. Upon success, DNS changes may take 6-12 hours to become active.",
         "method": "post",
         "params": [
             {
@@ -2367,6 +2500,7 @@
         "path": "/v1/server/reverse_set_ipv4"
     },
     "server.reverse_set_ipv6": {
+        "description": "Set a reverse DNS entry for an IPv6 address of a virtual machine. Upon success, DNS changes may take 6-12 hours to become active.",
         "method": "post",
         "params": [
             {
@@ -2391,6 +2525,7 @@
         "path": "/v1/server/reverse_set_ipv6"
     },
     "server.set_user_data": {
+        "description": "Sets the user-data for this subscription. User-data is a generic data store, which some provisioning tools and cloud operating systems use as a configuration file. It is generally consumed only once after an instance has been launched, but individual needs may vary.",
         "method": "post",
         "params": [
             {
@@ -2409,6 +2544,7 @@
         "path": "/v1/server/set_user_data"
     },
     "server.start": {
+        "description": "Start a virtual machine. If the machine is already running, it will be restarted.",
         "method": "post",
         "params": [
             {
@@ -2421,6 +2557,7 @@
         "path": "/v1/server/start"
     },
     "server.tag_set": {
+        "description": "Set the tag of a virtual machine.",
         "method": "post",
         "params": [
             {
@@ -2439,6 +2576,7 @@
         "path": "/v1/server/tag_set"
     },
     "server.upgrade_plan": {
+        "description": "Upgrade the plan of a virtual machine. The virtual machine will be rebooted upon a successful upgrade.",
         "method": "post",
         "params": [
             {
@@ -2457,6 +2595,7 @@
         "path": "/v1/server/upgrade_plan"
     },
     "server.upgrade_plan_list": {
+        "description": "Retrieve a list of the VPSPLANIDs for which a virtual machine can be upgraded. An empty response array means that there are currently no upgrades available.",
         "method": "get",
         "params": [
             {
@@ -2469,6 +2608,7 @@
         "path": "/v1/server/upgrade_plan_list"
     },
     "snapshot.create": {
+        "description": "Create a snapshot from an existing virtual machine.  The virtual machine does not need to be stopped.",
         "method": "post",
         "params": [
             {
@@ -2487,6 +2627,7 @@
         "path": "/v1/snapshot/create"
     },
     "snapshot.create_from_url": {
+        "description": "Create a new snapshot on the current account. The snapshot will be downloaded from a given URL. Download status can be checked with the v1/snapshot/list call.",
         "method": "post",
         "params": [
             {
@@ -2499,6 +2640,7 @@
         "path": "/v1/snapshot/create_from_url"
     },
     "snapshot.destroy": {
+        "description": "Destroy (delete) a snapshot. There is no going back from this call.",
         "method": "post",
         "params": [
             {
@@ -2511,6 +2653,7 @@
         "path": "/v1/snapshot/destroy"
     },
     "snapshot.list": {
+        "description": "List all snapshots on the current account.",
         "method": "get",
         "params": [
             {
@@ -2523,6 +2666,7 @@
         "path": "/v1/snapshot/list"
     },
     "sshkey.create": {
+        "description": "Create a new SSH Key.",
         "method": "post",
         "params": [
             {
@@ -2541,6 +2685,7 @@
         "path": "/v1/sshkey/create"
     },
     "sshkey.destroy": {
+        "description": "Remove a SSH key.  Note that this will not remove the key from any machines that already have it.",
         "method": "post",
         "params": [
             {
@@ -2553,11 +2698,13 @@
         "path": "/v1/sshkey/destroy"
     },
     "sshkey.list": {
+        "description": "List all the SSH keys on the current account.",
         "method": "get",
         "params": [],
         "path": "/v1/sshkey/list"
     },
     "sshkey.update": {
+        "description": "Update an existing SSH Key. Note that this will only update newly installed machines. The key will not be updated on any existing machines.",
         "method": "post",
         "params": [
             {
@@ -2582,6 +2729,7 @@
         "path": "/v1/sshkey/update"
     },
     "startupscript.create": {
+        "description": "Create a startup script.",
         "method": "post",
         "params": [
             {
@@ -2606,6 +2754,7 @@
         "path": "/v1/startupscript/create"
     },
     "startupscript.destroy": {
+        "description": "Remove a startup script.",
         "method": "post",
         "params": [
             {
@@ -2618,11 +2767,13 @@
         "path": "/v1/startupscript/destroy"
     },
     "startupscript.list": {
+        "description": "List all startup scripts on the current account. Scripts of type &quot;boot&quot; are executed by the server&#039;s operating system on the first boot. Scripts of type &quot;pxe&quot; are executed by iPXE when the server itself starts up.",
         "method": "get",
         "params": [],
         "path": "/v1/startupscript/list"
     },
     "startupscript.update": {
+        "description": "Update an existing startup script.",
         "method": "post",
         "params": [
             {
@@ -2647,6 +2798,7 @@
         "path": "/v1/startupscript/update"
     },
     "user.create": {
+        "description": "Create a new user.",
         "method": "post",
         "params": [
             {
@@ -2677,6 +2829,7 @@
         "path": "/v1/user/create"
     },
     "user.delete": {
+        "description": "Delete a user.",
         "method": "post",
         "params": [
             {
@@ -2689,11 +2842,13 @@
         "path": "/v1/user/delete"
     },
     "user.list": {
+        "description": "Retrieve a list of any users associated with this account.",
         "method": "get",
         "params": [],
         "path": "/v1/user/list"
     },
     "user.update": {
+        "description": "Update the details for a user.",
         "method": "post",
         "params": [
             {
