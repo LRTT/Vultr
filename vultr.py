@@ -102,6 +102,4 @@ class Vultr(Base):
                 name = subclass_n_method_loc.pop(0)
                 on_sub_class = on_sub_class.create_or_get_sub_class(name)
             name = subclass_n_method_loc.pop(0)
-            if full_method_name == 'server.create':
-                print(on_sub_class.__name__, name)
             setattr(on_sub_class, name, on_sub_class.create_method(BUILD[full_method_name]))
