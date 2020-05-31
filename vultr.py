@@ -1,7 +1,7 @@
 import requests
 
 class Vultr:
-    HOST = "https://api.vultr.com/v1/"
+    HOST = "https://api.vultr.com"
     
     def __init__(self, API_KEY):
         self.session = requests.session()
