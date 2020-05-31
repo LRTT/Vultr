@@ -58,7 +58,7 @@ class Base(object):
     def create_or_get_sub_class(self, class_name):
         return getattr(self, class_name, self.create_sub_class(class_name))
 
-    def type_to_python(type_string):
+    def type_to_python(self, type_string):
         if type_string == "integer": return int
         if type_string == "string": return str
         if type_string == "boolean": return bool
@@ -73,9 +73,9 @@ class Base(object):
                 except IndexError:
                     raise Exception('%s is invaild args' % (value))
             for key, value in kwargs.items():
-                param_info = ([param for param in params if key == param['name']]+[None])[0]
+                param_info = ([param for param in method_info['params'] if key == param['name']]+[None])[0]
                 if param_info:
-                    assert isinstance(self.type_to_python(param_info['type'])), '%s must be %s, not' % (param_info['name'], param_info['type'], type(value).__name__)
+                    assert isinstance(value, self.type_to_python(param_info['type'])), '%s must be %s, not' % (param_info['name'], param_info['type'], type(value).__name__)
                     data[param_info['name']] = value
             for param in method_info['params']:
                 if param['required'] and param['name'] not in data:
