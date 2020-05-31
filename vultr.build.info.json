@@ -1,0 +1,2738 @@
+{
+    "app_change_baremetal_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/baremetal/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Application to use. See /v1/baremetal/app_change_list.",
+                "name": "APPID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/baremetal/app_change"
+    },
+    "app_change_list_baremetal_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/baremetal/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/baremetal/app_change_list"
+    },
+    "app_change_list_server_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/server/app_change_list"
+    },
+    "app_change_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Application to use. See /v1/server/app_change_list.",
+                "name": "APPID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/server/app_change"
+    },
+    "attach_block_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "ID of the block storage subscription to attach",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "ID of the VPS subscription to mount the block storage subscription to",
+                "name": "attach_to_SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "'yes' or 'no'.  If 'yes', this will be attached to the instance without a restart (requires support from the instance's operating system). (default is 'no')",
+                "name": "live",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/block/attach"
+    },
+    "attach_reservedip_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Reserved IP to be attached. Include the subnet size in this parameter (e.g: /32 or /64).",
+                "name": "ip_address",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "Unique identifier of the target server.",
+                "name": "attach_SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/reservedip/attach"
+    },
+    "availability_baremetal_regions_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Location to check availability.",
+                "name": "DCID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/regions/availability_baremetal"
+    },
+    "availability_regions_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Location to check availability.",
+                "name": "DCID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "The type of plans for which to include availability. Possible values: \"all\", \"vc2\", \"ssd\", \"vdc2\", \"dedicated\".",
+                "name": "type",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/regions/availability"
+    },
+    "availability_vc2_regions_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Location to check availability.",
+                "name": "DCID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/regions/availability_vc2"
+    },
+    "availability_vdc2_regions_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Location to check availability.",
+                "name": "DCID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/regions/availability_vdc2"
+    },
+    "backup_disable_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/server/backup_disable"
+    },
+    "backup_enable_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/server/backup_enable"
+    },
+    "backup_get_schedule_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/server/backup_get_schedule"
+    },
+    "backup_set_schedule_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Backup cron type. Can be one of 'daily', 'weekly', 'monthly', 'daily_alt_even', or 'daily_alt_odd'.",
+                "name": "cron_type",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "Hour value (0-23). Applicable to crons: 'daily', 'weekly', 'monthly', 'daily_alt_even', 'daily_alt_odd'",
+                "name": "hour",
+                "required": false,
+                "type": "integer"
+            },
+            {
+                "description": "Day-of-week value (0-6). Applicable to crons: 'weekly'.",
+                "name": "dow",
+                "required": false,
+                "type": "integer"
+            },
+            {
+                "description": "Day-of-month value (1-28). Applicable to crons: 'monthly'.",
+                "name": "dom",
+                "required": false,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/server/backup_set_schedule"
+    },
+    "bandwidth_baremetal_v1": {
+        "method": "get",
+        "params": [],
+        "path": "/v1/baremetal/bandwidth"
+    },
+    "bandwidth_server_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription.  These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/server/bandwidth"
+    },
+    "conf_info_loadbalancer_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier of a load balancer subscription. This can be found using the \"v1/loadbalancer/list\" call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/loadbalancer/conf_info"
+    },
+    "convert_reservedip_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "SUBID of the server that currently has the IP address you want to convert",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "IP address you want to convert (v4 must be a /32, v6 must be a /64)",
+                "name": "ip_address",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "Label for this reserved IP",
+                "name": "label",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/reservedip/convert"
+    },
+    "create_baremetal_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Location in which to create the server. See v1/regions/list.",
+                "name": "DCID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Plan to use when creating this server. See v1/plans/list_baremetal.",
+                "name": "METALPLANID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Operating system to use. See v1/os/list.",
+                "name": "OSID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "The SCRIPTID of a startup script to execute on boot. This only works when using a Vultr supplied operating system. See v1/startupscript/list.",
+                "name": "SCRIPTID",
+                "required": false,
+                "type": "integer"
+            },
+            {
+                "description": "If you've selected the 'snapshot' operating system, this should be the SNAPSHOTID (see v1/snapshot/list) to restore for the initial installation.",
+                "name": "SNAPSHOTID",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "'yes' or 'no'.  If yes, an IPv6 subnet will be assigned to the server.",
+                "name": "enable_ipv6",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "This is a text label that will be shown in the control panel.",
+                "name": "label",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "List of SSH keys to apply to this server on install (only valid for Linux/FreeBSD). See v1/sshkey/list. Separate keys with commas.",
+                "name": "SSHKEYID",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "If launching an application (OSID 186), this is the APPID to launch. See v1/app/list.",
+                "name": "APPID",
+                "required": false,
+                "type": "integer"
+            },
+            {
+                "description": "Base64 encoded user-data.",
+                "name": "userdata",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "(optional, default 'yes') 'yes' or 'no'. If yes, an activation email will be sent when the server is ready.",
+                "name": "notify_activate",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "The hostname to assign to this server.",
+                "name": "hostname",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "The tag to assign to this server.",
+                "name": "tag",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "IP address of the floating IP to use as the main IP of this server.",
+                "name": "reserved_ip_v4",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/baremetal/create"
+    },
+    "create_block_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "DCID of the location to create this subscription in.  See /v1/regions/list",
+                "name": "DCID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Size (in GB) of this subscription.",
+                "name": "size_gb",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Text label that will be associated with the subscription",
+                "name": "label",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/block/create"
+    },
+    "create_domain_dns_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Domain name to create",
+                "name": "domain",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "Server IP to use when creating default records (A and MX)",
+                "name": "serverip",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/dns/create_domain"
+    },
+    "create_from_url_iso_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Remote URL from where the ISO will be downloaded.",
+                "name": "url",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/iso/create_from_url"
+    },
+    "create_from_url_snapshot_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Remote URL from where the snapshot will be downloaded.",
+                "name": "url",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/snapshot/create_from_url"
+    },
+    "create_ipv4_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "(optional, default 'yes') 'yes' or 'no'. If yes, the server is rebooted immediately.",
+                "name": "reboot",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/server/create_ipv4"
+    },
+    "create_loadbalancer_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Location in which to create the load balancer. See \"v1/regions/list\".",
+                "name": "DCID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Text label that will be associated with the subscription.",
+                "name": "label",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "Forces redirect from HTTP to HTTPS.",
+                "name": "config_ssl_redirect",
+                "required": false,
+                "type": "boolean"
+            },
+            {
+                "description": "Enables sticky sessions for your load balancer - valid options are on or off.",
+                "name": "sticky_sessions",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "Name for your stick session.",
+                "name": "cookie_name",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "Balancing algorithm for your load balancer - valid options are roundrobin or leastconn.",
+                "name": "balancing_algorithm",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "Enables proxy protocol - valid options are on or off",
+                "name": "proxy_protocol",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "The SSL certificates private key.",
+                "name": "ssl_private_key",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "The SSL certificate chain.",
+                "name": "ssl_chain",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "List which instances you want attached to your load balancer.",
+                "name": "attached_nodes",
+                "required": false,
+                "type": "list"
+            }
+        ],
+        "path": "/v1/loadbalancer/create"
+    },
+    "create_network_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Location for the network. See v1/regions/list.",
+                "name": "DCID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Description of network.",
+                "name": "description",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "IPv4 network to be used when attaching servers to this network.",
+                "name": "v4_subnet",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "Network mask corresponding with the v4_subnet.",
+                "name": "v4_subnet_mask",
+                "required": false,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/network/create"
+    },
+    "create_objectstorage_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Cluster to use for object storage. See /v1/objectstorage/list_cluster.",
+                "name": "OBJSTORECLUSTERID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Text label that will be associated with the subscription.",
+                "name": "label",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/objectstorage/create"
+    },
+    "create_record_dns_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Domain name to add record to",
+                "name": "domain",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "Name (subdomain) of record",
+                "name": "name",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "Type (A, AAAA, MX, etc) of record",
+                "name": "type",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "Data for this record",
+                "name": "data",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "TTL of this record",
+                "name": "ttl",
+                "required": false,
+                "type": "integer"
+            },
+            {
+                "description": "(only required for MX and SRV) Priority of this record (omit the priority from the data)",
+                "name": "priority",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/dns/create_record"
+    },
+    "create_reservedip_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Location to create this reserved IP in.  See v1/regions/list",
+                "name": "DCID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "'v4' or 'v6' Type of reserved IP to create",
+                "name": "ip_type",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "Label for this reserved IP",
+                "name": "label",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/reservedip/create"
+    },
+    "create_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Location to create this virtual machine in. See v1/regions/list.",
+                "name": "DCID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Plan to use when creating this virtual machine. See v1/plans/list.",
+                "name": "VPSPLANID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Operating system to use. See v1/os/list.",
+                "name": "OSID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "If you've selected the 'custom' operating system, this can be set to chainload the specified URL on bootup, via iPXE.",
+                "name": "ipxe_chain_url",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "If you've selected the 'custom' operating system, this is the ID of a specific ISO to mount during the deployment.",
+                "name": "ISOID",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "If you've not selected a 'custom' operating system, this can be the SCRIPTID of a startup script to execute on boot. See v1/startupscript/list.",
+                "name": "SCRIPTID",
+                "required": false,
+                "type": "integer"
+            },
+            {
+                "description": "If you've selected the 'snapshot' operating system, this should be the SNAPSHOTID (see v1/snapshot/list) to restore for the initial installation.",
+                "name": "SNAPSHOTID",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "'yes' or 'no'. If yes, an IPv6 subnet will be assigned to the machine (where available).",
+                "name": "enable_ipv6",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "'yes' or 'no'. If yes, private networking support will be added to the new server.",
+                "name": "enable_private_network",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "List of private networks to attach to this server. Use either this field or enable_private_network, not both.",
+                "name": "NETWORKID",
+                "required": false,
+                "type": "list"
+            },
+            {
+                "description": "This is a text label that will be shown in the control panel.",
+                "name": "label",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "List of SSH keys to apply to this server on install (only valid for Linux/FreeBSD). See v1/sshkey/list. Separate keys with commas.",
+                "name": "SSHKEYID",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "'yes' or 'no'. If yes, automatic backups will be enabled for this server (these have an extra charge associated with them).",
+                "name": "auto_backups",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "If launching an application (OSID 186), this is the APPID to launch. See v1/app/list.",
+                "name": "APPID",
+                "required": false,
+                "type": "integer"
+            },
+            {
+                "description": "Base64 encoded user-data",
+                "name": "userdata",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "(optional, default 'yes') 'yes' or 'no'. If yes, an activation email will be sent when the server is ready.",
+                "name": "notify_activate",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "(optional, default 'no') 'yes' or 'no'. If yes, DDOS protection will be enabled on the subscription (there is an additional charge for this).",
+                "name": "ddos_protection",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "IP address of the floating IP to use as the main IP of this server.",
+                "name": "reserved_ip_v4",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "The hostname to assign to this server.",
+                "name": "hostname",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "The tag to assign to this server.",
+                "name": "tag",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "The firewall group to assign to this server. See /v1/firewall/group_list.",
+                "name": "FIREWALLGROUPID",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/server/create"
+    },
+    "create_snapshot_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Identifier of the virtual machine to create a snapshot from.  See v1/server/list",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Description of snapshot contents",
+                "name": "description",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/snapshot/create"
+    },
+    "create_sshkey_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Name of the SSH key",
+                "name": "name",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "SSH public key (in authorized_keys format)",
+                "name": "ssh_key",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/sshkey/create"
+    },
+    "create_startupscript_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Name of the newly created startup script.",
+                "name": "name",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "Startup script contents.",
+                "name": "script",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "Type of startup script. Default is 'boot'.",
+                "name": "type",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/startupscript/create"
+    },
+    "create_user_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Email address for this user",
+                "name": "email",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "Name for this user",
+                "name": "name",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "'yes' or 'no'. If yes, this user's API key will work on api.vultr.com.  Default is yes",
+                "name": "api_enabled",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "List of ACLs that this user should have.  See /v1/user/list for information on possible ACLs",
+                "name": "acls",
+                "required": true,
+                "type": "list"
+            }
+        ],
+        "path": "/v1/user/create"
+    },
+    "delete_block_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "ID of the block storage subscription to delete",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/block/delete"
+    },
+    "delete_domain_dns_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Domain name to delete",
+                "name": "domain",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/dns/delete_domain"
+    },
+    "delete_record_dns_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Domain name to delete record from",
+                "name": "domain",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "ID of record to delete (see /dns/records)",
+                "name": "RECORDID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/dns/delete_record"
+    },
+    "delete_user_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "ID of the user to delete",
+                "name": "USERID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/user/delete"
+    },
+    "destroy_baremetal_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/baremetal/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/baremetal/destroy"
+    },
+    "destroy_ipv4_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "IPv4 address to remove.",
+                "name": "ip",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/server/destroy_ipv4"
+    },
+    "destroy_iso_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this ISO image. These can be found using the v1/iso/list call.",
+                "name": "ISOID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/iso/destroy"
+    },
+    "destroy_loadbalancer_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier of a load balancer subscription. This can be found using the \"v1/loadbalancer/list\" call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/loadbalancer/destroy"
+    },
+    "destroy_network_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this network.  These can be found using the v1/network/list call.",
+                "name": "NETWORKID",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/network/destroy"
+    },
+    "destroy_objectstorage_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/objectstorage/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/objectstorage/destroy"
+    },
+    "destroy_reservedip_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Reserved IP to remove from your account.",
+                "name": "ip_address",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/reservedip/destroy"
+    },
+    "destroy_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription.  These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/server/destroy"
+    },
+    "destroy_snapshot_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this snapshot.  These can be found using the v1/snapshot/list call.",
+                "name": "SNAPSHOTID",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/snapshot/destroy"
+    },
+    "destroy_sshkey_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this SSH key.  These can be found using the v1/sshkey/list call.",
+                "name": "SSHKEYID",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/sshkey/destroy"
+    },
+    "destroy_startupscript_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this startup script. These can be found using the v1/startupscript/list call.",
+                "name": "SCRIPTID",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/startupscript/destroy"
+    },
+    "detach_block_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "ID of the block storage subscription to detach",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "'yes' or 'no'.  If 'yes', this will be detached from the instance without a restart. (default is 'no')",
+                "name": "live",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/block/detach"
+    },
+    "detach_reservedip_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Reserved IP to be detached. Include the subnet size in this parameter (e.g: /32 or /64).",
+                "name": "ip_address",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "Unique identifier of the target server.",
+                "name": "detach_SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/reservedip/detach"
+    },
+    "dnssec_enable_dns_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Domain name to update record",
+                "name": "domain",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "'yes' or 'no'.  If yes, DNSSEC will be enabled for the given domain",
+                "name": "enable",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/dns/dnssec_enable"
+    },
+    "dnssec_info_dns_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Domain from which to gather DNSSEC keys.",
+                "name": "domain",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/dns/dnssec_info"
+    },
+    "firewall_group_set_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. See v1/server/list.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "The firewall group to apply to this server. A value of \"0\" means \"no firewall group\". See /v1/firewall/group_list.",
+                "name": "FIREWALLGROUPID",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/server/firewall_group_set"
+    },
+    "forward_rule_create_loadbalancer_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier of a load balancer subscription. This can be found using the \"v1/loadbalancer/list\" call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Endpoint protocol on load balancer side. Possible values: \"http\", \"https\", \"tcp\".",
+                "name": "frontend_protocol",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "Endpoint port on load balancer side.",
+                "name": "frontend_port",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Endpoint protocol on instance side. Possible values: \"http\", \"https\", \"tcp\".",
+                "name": "backend_protocol",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "Endpoint port on instance side.",
+                "name": "backend_port",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/loadbalancer/forward_rule_create"
+    },
+    "forward_rule_delete_loadbalancer_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier of a load balancer subscription. This can be found using the \"v1/loadbalancer/list\" call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Unique identifier of a forwarding rule. This can be found using the \"v1/loadbalancer/forward_rule_list\" call.",
+                "name": "RULEID",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/loadbalancer/forward_rule_delete"
+    },
+    "forward_rule_list_loadbalancer_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier of a load balancer subscription. This can be found using the \"v1/loadbalancer/list\" call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/loadbalancer/forward_rule_list"
+    },
+    "generic_info_loadbalancer_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier of a load balancer subscription. This can be found using the \"v1/loadbalancer/list\" call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/loadbalancer/generic_info"
+    },
+    "generic_update_loadbalancer_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier of a load balancer subscription. This can be found using the \"v1/loadbalancer/list\" call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Label of your load balancer",
+                "name": "label",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "Balancing algorithm. Possible values: \"roundrobin\", \"leastconn\".",
+                "name": "balancing_algorithm",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "Enables sticky sessions for your load balancer - valid options are on or off.",
+                "name": "sticky_sessions",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "Name for your stick session.",
+                "name": "cookie_name",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "Force HTTP to HTTPS.",
+                "name": "ssl_redirect",
+                "required": false,
+                "type": "boolean"
+            },
+            {
+                "description": "(optionals) Enables proxy protocol - valid options are on or off",
+                "name": "proxy_protocol",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/loadbalancer/generic_update"
+    },
+    "get_app_info_baremetal_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/baremetal/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/baremetal/get_app_info"
+    },
+    "get_app_info_server_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/server/get_app_info"
+    },
+    "get_user_data_baremetal_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/baremetal/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/baremetal/get_user_data"
+    },
+    "get_user_data_server_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/server/get_user_data"
+    },
+    "group_create_firewall_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Description of firewall group.",
+                "name": "description",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/firewall/group_create"
+    },
+    "group_delete_firewall_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Firewall group to delete.",
+                "name": "FIREWALLGROUPID",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/firewall/group_delete"
+    },
+    "group_list_firewall_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Filter result set to only contain this firewall group.",
+                "name": "FIREWALLGROUPID",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/firewall/group_list"
+    },
+    "group_set_description_firewall_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Firewall group to update.",
+                "name": "FIREWALLGROUPID",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "Description of firewall group.",
+                "name": "description",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/firewall/group_set_description"
+    },
+    "halt_baremetal_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/baremetal/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/baremetal/halt"
+    },
+    "halt_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription.  These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/server/halt"
+    },
+    "health_check_info_loadbalancer_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier of a load balancer subscription. This can be found using the \"v1/loadbalancer/list\" call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/loadbalancer/health_check_info"
+    },
+    "health_check_update_loadbalancer_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier of a load balancer subscription. This can be found using the \"v1/loadbalancer/list\" call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Connection protocol. Possible values: \"http\", \"https\".",
+                "name": "protocol",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "Connection port.",
+                "name": "port",
+                "required": false,
+                "type": "integer"
+            },
+            {
+                "description": "Time in seconds to perform health check.",
+                "name": "check_interval",
+                "required": false,
+                "type": "integer"
+            },
+            {
+                "description": "Time in seconds to wait for a health check response.",
+                "name": "response_timeout",
+                "required": false,
+                "type": "integer"
+            },
+            {
+                "description": "Number of failed attempts encountered before failover.",
+                "name": "unhealthy_threshold",
+                "required": false,
+                "type": "integer"
+            },
+            {
+                "description": "Number of failed attempts encountered before failover.",
+                "name": "healthy_threshold",
+                "required": false,
+                "type": "integer"
+            },
+            {
+                "description": "Path to page used for health check. The target page must return an HTTP 200 success code.",
+                "name": "path",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/loadbalancer/health_check_update"
+    },
+    "info_account_v1": {
+        "method": "get",
+        "params": [],
+        "path": "/v1/account/info"
+    },
+    "info_auth_v1": {
+        "method": "get",
+        "params": [],
+        "path": "/v1/auth/info"
+    },
+    "instance_attach_loadbalancer_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier of LoadBalancer subscription to attach to.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Unique identifier (SUBID) of VPS or baremetal subscription to attach.",
+                "name": "backendNode",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/loadbalancer/instance_attach"
+    },
+    "instance_detach_loadbalancer_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier of LoadBalancer subscription to detach from.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Unique identifier (SUBID) of VPS or baremetal subscription to detach.",
+                "name": "backendNode",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/loadbalancer/instance_detach"
+    },
+    "instance_list_loadbalancer_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier of a load balancer subscription. This can be found using the \"v1/loadbalancer/list\" call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/loadbalancer/instance_list"
+    },
+    "ipv6_enable_baremetal_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/baremetal/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/baremetal/ipv6_enable"
+    },
+    "ipv6_enable_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/server/ipv6_enable"
+    },
+    "iso_attach_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the /v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "The ISO that will be mounted. See the /v1/iso/list call.",
+                "name": "ISOID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/server/iso_attach"
+    },
+    "iso_detach_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the /v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/server/iso_detach"
+    },
+    "iso_status_server_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the /v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/server/iso_status"
+    },
+    "label_set_baremetal_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/baremetal/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "This is a text label that will be shown in the control panel.",
+                "name": "label",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/baremetal/label_set"
+    },
+    "label_set_block_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "ID of the block storage subscription.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Text label that will be shown in the control panel.",
+                "name": "label",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/block/label_set"
+    },
+    "label_set_loadbalancer_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier of a load balancer subscription. This can be found using the \"v1/loadbalancer/list\" call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Text label that will be shown in the control panel.",
+                "name": "label",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/loadbalancer/label_set"
+    },
+    "label_set_objectstorage_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/objectstorage/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Text label that will be shown in the control panel.",
+                "name": "label",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/objectstorage/label_set"
+    },
+    "label_set_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "This is a text label that will be shown in the control panel.",
+                "name": "label",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/server/label_set"
+    },
+    "list_app_v1": {
+        "method": "get",
+        "params": [],
+        "path": "/v1/app/list"
+    },
+    "list_backup_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Filter result set to only contain backups of this subscription object.",
+                "name": "SUBID",
+                "required": false,
+                "type": "integer"
+            },
+            {
+                "description": "Filter result set to only contain this backup.",
+                "name": "BACKUPID",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/backup/list"
+    },
+    "list_baremetal_plans_v1": {
+        "method": "get",
+        "params": [],
+        "path": "/v1/plans/list_baremetal"
+    },
+    "list_baremetal_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier of a subscription. Only the subscription object will be returned.",
+                "name": "SUBID",
+                "required": false,
+                "type": "integer"
+            },
+            {
+                "description": "A tag string. Only subscription objects with this tag will be returned.",
+                "name": "tag",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "A text label string. Only subscription objects with this text label will be returned.",
+                "name": "label",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "An IPv4 address. Only the subscription matching this IPv4 address will be returned.",
+                "name": "main_ip",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/baremetal/list"
+    },
+    "list_block_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier of a subscription. Only the subscription object will be returned.",
+                "name": "SUBID",
+                "required": false,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/block/list"
+    },
+    "list_cluster_objectstorage_v1": {
+        "method": "get",
+        "params": [],
+        "path": "/v1/objectstorage/list_cluster"
+    },
+    "list_dns_v1": {
+        "method": "get",
+        "params": [],
+        "path": "/v1/dns/list"
+    },
+    "list_ipv4_baremetal_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/baremetal/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/baremetal/list_ipv4"
+    },
+    "list_ipv4_server_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "'yes' or 'no'. If 'yes', include information about the public network adapter (such as MAC address) with the \"main_ip\" entry.",
+                "name": "public_network",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/server/list_ipv4"
+    },
+    "list_ipv6_baremetal_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/baremetal/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/baremetal/list_ipv6"
+    },
+    "list_ipv6_server_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/server/list_ipv6"
+    },
+    "list_iso_v1": {
+        "method": "get",
+        "params": [],
+        "path": "/v1/iso/list"
+    },
+    "list_loadbalancer_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier of a load balancer subscription. Only the subscription object will be returned.",
+                "name": "SUBID",
+                "required": false,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/loadbalancer/list"
+    },
+    "list_network_v1": {
+        "method": "get",
+        "params": [],
+        "path": "/v1/network/list"
+    },
+    "list_objectstorage_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "(optional, default 'yes') 'yes' or 'no'. If 'yes', include S3 keys with each subscription entry.",
+                "name": "include_s3",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "Unique identifier of a subscription. Only the subscription object will be returned.",
+                "name": "SUBID",
+                "required": false,
+                "type": "integer"
+            },
+            {
+                "description": "A text label string. Only subscription objects with this text label will be returned.",
+                "name": "label",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/objectstorage/list"
+    },
+    "list_os_v1": {
+        "method": "get",
+        "params": [],
+        "path": "/v1/os/list"
+    },
+    "list_plans_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "The type of plans to return. Possible values: \"all\", \"vc2\", \"ssd\", \"vdc2\", \"dedicated\", \"vc2z\".",
+                "name": "type",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/plans/list"
+    },
+    "list_public_iso_v1": {
+        "method": "get",
+        "params": [],
+        "path": "/v1/iso/list_public"
+    },
+    "list_regions_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "'yes' or 'no'. If 'yes', include the current availability with each region entry.",
+                "name": "availability",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/regions/list"
+    },
+    "list_reservedip_v1": {
+        "method": "get",
+        "params": [],
+        "path": "/v1/reservedip/list"
+    },
+    "list_server_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier of a subscription. Only the subscription object will be returned.",
+                "name": "SUBID",
+                "required": false,
+                "type": "integer"
+            },
+            {
+                "description": "A tag string. Only subscription objects with this tag will be returned.",
+                "name": "tag",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "A text label string. Only subscription objects with this text label will be returned.",
+                "name": "label",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "An IPv4 address. Only the subscription matching this IPv4 address will be returned.",
+                "name": "main_ip",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/server/list"
+    },
+    "list_snapshot_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Filter result set to only contain this snapshot.",
+                "name": "SNAPSHOTID",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/snapshot/list"
+    },
+    "list_sshkey_v1": {
+        "method": "get",
+        "params": [],
+        "path": "/v1/sshkey/list"
+    },
+    "list_startupscript_v1": {
+        "method": "get",
+        "params": [],
+        "path": "/v1/startupscript/list"
+    },
+    "list_user_v1": {
+        "method": "get",
+        "params": [],
+        "path": "/v1/user/list"
+    },
+    "list_vc2_plans_v1": {
+        "method": "get",
+        "params": [],
+        "path": "/v1/plans/list_vc2"
+    },
+    "list_vc2z_plans_v1": {
+        "method": "get",
+        "params": [],
+        "path": "/v1/plans/list_vc2z"
+    },
+    "list_vdc2_plans_v1": {
+        "method": "get",
+        "params": [],
+        "path": "/v1/plans/list_vdc2"
+    },
+    "neighbors_server_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/server/neighbors"
+    },
+    "os_change_baremetal_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/baremetal/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Operating system to use. See /v1/baremetal/os_change_list.",
+                "name": "OSID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/baremetal/os_change"
+    },
+    "os_change_list_baremetal_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/baremetal/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/baremetal/os_change_list"
+    },
+    "os_change_list_server_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/server/os_change_list"
+    },
+    "os_change_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Operating system to use. See /v1/server/os_change_list.",
+                "name": "OSID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/server/os_change"
+    },
+    "private_network_disable_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Unique identifier for the private network to remove from this subscription. This field is optional if there is only one private network in a given location. See the v1/network/list call.",
+                "name": "NETWORKID",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/server/private_network_disable"
+    },
+    "private_network_enable_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Unique identifier for the private network to attach to this subscription.  This field is optional if there is only one private network in a given location.  See the v1/network/list call.",
+                "name": "NETWORKID",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/server/private_network_enable"
+    },
+    "private_networks_server_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/server/private_networks"
+    },
+    "reboot_baremetal_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/baremetal/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/baremetal/reboot"
+    },
+    "reboot_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription.  These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/server/reboot"
+    },
+    "records_dns_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Domain to list records for",
+                "name": "domain",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/dns/records"
+    },
+    "reinstall_baremetal_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/baremetal/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/baremetal/reinstall"
+    },
+    "reinstall_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription.  These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "The hostname to assign to this server.",
+                "name": "hostname",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/server/reinstall"
+    },
+    "resize_block_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "ID of the block storage subscription to resize",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "New size (in GB) of the block storage subscription",
+                "name": "size_gb",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/block/resize"
+    },
+    "restore_backup_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription.  These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "BACKUPID (see v1/backup/list) to restore to this instance",
+                "name": "BACKUPID",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/server/restore_backup"
+    },
+    "restore_snapshot_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription.  These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "SNAPSHOTID (see v1/snapshot/list) to restore to this instance",
+                "name": "SNAPSHOTID",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/server/restore_snapshot"
+    },
+    "reverse_default_ipv4_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "IPv4 address used in the reverse DNS update. These can be found with the v1/server/list_ipv4 call.",
+                "name": "ip",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/server/reverse_default_ipv4"
+    },
+    "reverse_delete_ipv6_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "IPv6 address used in the reverse DNS update. These can be found with the v1/server/reverse_list_ipv6 call.",
+                "name": "ip",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/server/reverse_delete_ipv6"
+    },
+    "reverse_list_ipv6_server_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/server/reverse_list_ipv6"
+    },
+    "reverse_set_ipv4_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "IPv4 address used in the reverse DNS update. These can be found with the v1/server/list_ipv4 call.",
+                "name": "ip",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "reverse DNS entry.",
+                "name": "entry",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/server/reverse_set_ipv4"
+    },
+    "reverse_set_ipv6_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "IPv6 address used in the reverse DNS update. These can be found with the v1/server/list_ipv6 or v1/server/reverse_list_ipv6 calls.",
+                "name": "ip",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "reverse DNS entry.",
+                "name": "entry",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/server/reverse_set_ipv6"
+    },
+    "rule_create_firewall_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Target firewall group. See /v1/firewall/group_list.",
+                "name": "FIREWALLGROUPID",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "Direction of rule. Possible values: \"in\".",
+                "name": "direction",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "IP address type. Possible values: \"v4\", \"v6\".",
+                "name": "ip_type",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "Protocol type. Possible values: \"icmp\", \"tcp\", \"udp\", \"gre\".",
+                "name": "protocol",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "IP address representing a subnet. The IP address format must match with the \"ip_type\" parameter value.",
+                "name": "subnet",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "IP prefix size in bits.",
+                "name": "subnet_size",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "TCP/UDP only. This field can be an integer value specifying a port or a colon separated port range.",
+                "name": "port",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "This field supports notes up to 255 characters.",
+                "name": "notes",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "If the source string is given a value of \"cloudflare\" subnet and subnet_size will both be ignored, this will allow all of Cloudflare's IP space through the firewall. Possible values: \"\", \"cloudflare\".",
+                "name": "source",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/firewall/rule_create"
+    },
+    "rule_delete_firewall_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Target firewall group. See /v1/firewall/group_list.",
+                "name": "FIREWALLGROUPID",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "Rule number to delete. See /v1/firewall/rule_list.",
+                "name": "rulenumber",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/firewall/rule_delete"
+    },
+    "rule_list_firewall_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Target firewall group. See /v1/firewall/group_list.",
+                "name": "FIREWALLGROUPID",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "Direction of firewall rules. Possible values: \"in\".",
+                "name": "direction",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "IP address type. Possible values: \"v4\", \"v6\".",
+                "name": "ip_type",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/firewall/rule_list"
+    },
+    "s3key_regenerate_objectstorage_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/objectstorage/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/objectstorage/s3key_regenerate"
+    },
+    "set_user_data_baremetal_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/baremetal/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Base64 encoded user-data",
+                "name": "userdata",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/baremetal/set_user_data"
+    },
+    "set_user_data_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Base64 encoded user-data",
+                "name": "userdata",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/server/set_user_data"
+    },
+    "soa_info_dns_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Domain from which to gather SOA information",
+                "name": "domain",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/dns/soa_info"
+    },
+    "soa_update_dns_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Domain name to update record",
+                "name": "domain",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "(Optional) Primary nameserver to store in the SOA record",
+                "name": "nsprimary",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "(Optional) Administrative email to store in the SOA record",
+                "name": "email",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/dns/soa_update"
+    },
+    "ssl_add_loadbalancer_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier of LoadBalancer subscription.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "The SSL certificates private key.",
+                "name": "ssl_private_key",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "The SSL certificate chain.",
+                "name": "ssl_chain",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/loadbalancer/ssl_add"
+    },
+    "ssl_info_loadbalancer_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier of a load balancer subscription. This can be found using the \"v1/loadbalancer/list\" call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/loadbalancer/ssl_info"
+    },
+    "ssl_remove_loadbalancer_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier of LoadBalancer subscription.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/loadbalancer/ssl_remove"
+    },
+    "start_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription.  These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/server/start"
+    },
+    "tag_set_baremetal_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/baremetal/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "The tag to assign to this server. This tag is shown in the control panel.",
+                "name": "tag",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/baremetal/tag_set"
+    },
+    "tag_set_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "The tag to assign to this server. This tag is shown in the control panel.",
+                "name": "tag",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/server/tag_set"
+    },
+    "update_record_dns_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Domain name to update record",
+                "name": "domain",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "ID of record to update (see /dns/records)",
+                "name": "RECORDID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "Name (subdomain) of record",
+                "name": "name",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "Data for this record",
+                "name": "data",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "TTL of this record",
+                "name": "ttl",
+                "required": false,
+                "type": "integer"
+            },
+            {
+                "description": "(only required for MX and SRV) Priority of this record (omit the priority from the data)",
+                "name": "priority",
+                "required": false,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/dns/update_record"
+    },
+    "update_sshkey_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "SSHKEYID of key to update (see /v1/sshkey/list)",
+                "name": "SSHKEYID",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "New name for the SSH key",
+                "name": "name",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "New SSH key contents",
+                "name": "ssh_key",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/sshkey/update"
+    },
+    "update_startupscript_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "SCRIPTID of script to update (see /v1/startupscript/list).",
+                "name": "SCRIPTID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "New name for the startup script.",
+                "name": "name",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "New startup script contents.",
+                "name": "script",
+                "required": false,
+                "type": "string"
+            }
+        ],
+        "path": "/v1/startupscript/update"
+    },
+    "update_user_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "ID of the user to update",
+                "name": "USERID",
+                "required": true,
+                "type": "string"
+            },
+            {
+                "description": "New email address for this user",
+                "name": "email",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "New name for this user",
+                "name": "name",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "New password for this user",
+                "name": "password",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "'yes' or 'no'. If yes, this user's API key will work on api.vultr.com",
+                "name": "api_enabled",
+                "required": false,
+                "type": "string"
+            },
+            {
+                "description": "List of ACLs that this user should have.  See /v1/user/list for information on possible ACLs",
+                "name": "acls",
+                "required": false,
+                "type": "list"
+            }
+        ],
+        "path": "/v1/user/update"
+    },
+    "upgrade_plan_list_server_v1": {
+        "method": "get",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/server/upgrade_plan_list"
+    },
+    "upgrade_plan_server_v1": {
+        "method": "post",
+        "params": [
+            {
+                "description": "Unique identifier for this subscription. These can be found using the v1/server/list call.",
+                "name": "SUBID",
+                "required": true,
+                "type": "integer"
+            },
+            {
+                "description": "The new plan. See /v1/server/upgrade_plan_list.",
+                "name": "VPSPLANID",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "path": "/v1/server/upgrade_plan"
+    }
+}
