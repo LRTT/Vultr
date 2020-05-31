@@ -39,6 +39,8 @@ class Base(object):
                 raise VultrError('Internal server error. Try again at a later time')
             elif resp.status_code == 503:
                 raise VultrError('Rate limit hit. API requests are limited to an average of 1/s. Try your request again later.')
+            else:
+                raise VultrError(resp.text)
 
         _elapsed = time.time() - _start
         if _elapsed < self.req_duration:
@@ -47,8 +49,13 @@ class Base(object):
         return resp.json() if resp.text else {}
 
     def create_sub_class(self, class_name):
-        setattr(self, class_name, Base(self.__session))
-        return getattr(self, class_name)
+        sub_class_base = Base(self.__session)
+        sub_class_base.__name__ = class_name
+        setattr(self, class_name, sub_class_base)
+        return sub_class_base
+
+    def create_or_get_sub_class(self, class_name):
+        return getattr(self, class_name, self.create_sub_class(class_name))
 
     def type_to_python(type_string):
         if type_string == "integer": return int
@@ -56,7 +63,7 @@ class Base(object):
         if type_string == "boolean": return bool
         if type_string == "list": return list
 
-    def create_method(self, method_name, method_info):
+    def create_method(self, method_info):
         def method_wrapper(*args, **kwargs):
             data = {}
             for index, value in enumerate(args):
@@ -76,6 +83,7 @@ class Base(object):
         return method_wrapper
 
 class Vultr(Base):
+    __name__ = 'Vultr'
     
     def __init__(self, API_KEY):
         self.__session = requests.session()
@@ -87,10 +95,10 @@ class Vultr(Base):
         for method in BUILD:
             full_method_name = method
             subclass_n_method_loc = method.split('.')
+            s_ = method.split('.')
             on_sub_class = self
             while len(subclass_n_method_loc) != 1:
                 name = subclass_n_method_loc.pop(0)
-                if not hasattr(on_sub_class, name):
-                    on_sub_class = on_sub_class.create_sub_class(name)
+                on_sub_class = on_sub_class.create_or_get_sub_class(name)
             name = subclass_n_method_loc.pop(0)
-            setattr(on_sub_class, name, on_sub_class.create_method(name, BUILD[full_method_name]))
+            setattr(on_sub_class, name, on_sub_class.create_method(BUILD[full_method_name]))
