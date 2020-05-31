@@ -49,10 +49,11 @@ class Base(object):
         return resp.json() if resp.text else {}
 
     def create_sub_class(self, class_name):
-        sub_class_base = Base(self.__session)
-        sub_class_base.__name__ = class_name
-        setattr(self, class_name, sub_class_base)
-        return sub_class_base
+        if not hasattr(self, class_name):
+            sub_class_base = Base(self.__session)
+            sub_class_base.__name__ = class_name
+            setattr(self, class_name, sub_class_base)
+        return getattr(self, class_name)
 
     def create_or_get_sub_class(self, class_name):
         return getattr(self, class_name, self.create_sub_class(class_name))
@@ -101,4 +102,6 @@ class Vultr(Base):
                 name = subclass_n_method_loc.pop(0)
                 on_sub_class = on_sub_class.create_or_get_sub_class(name)
             name = subclass_n_method_loc.pop(0)
+            if full_method_name == 'server.create':
+                print(on_sub_class.__name__, name)
             setattr(on_sub_class, name, on_sub_class.create_method(BUILD[full_method_name]))
