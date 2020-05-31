@@ -1,19 +1,50 @@
 import requests
 import json
+import time
 
-build = json.load(open("vultr.build.info.json", "r"))
+BUILD = json.load(open("vultr.build.info.json", "r"))
 
-class Base:
+class VultrError(RuntimeError):
+    """ Vultr Exception """
+
+class Base(object):
+    # Ref https://raw.githubusercontent.com/spry-group/python-vultr/32b5d19b1b45db9ef96f0ddf4439df7a0acbd652/vultr/utils.py
+
     BASE_HOST = "https://api.vultr.com"
-    
+    REQ_PER_SECOND = 1
+
     def __init__(self, session):
         self.__session = session
+        # set the request/second at run-time
+        self.req_duration = 1 / self.REQ_PER_SECOND
 
     def request(self, method, path, data):
-        response = getattr(self.__session, method)(self.BASE_HOST + path, data=data)
-        if response.status_code != 200:
-            raise Exception(response.text)
-        return response.json()
+        """ API request / call method """
+        _start = time.time()
+        
+        if not path.startswith("/"): path = "/" + path
+        
+        resp = getattr(self.__session, method)(self.BASE_HOST + path, data=data)
+        
+        if resp.status_code != 200:
+            if resp.status_code == 400:
+                raise VultrError('Invalid API location. Check the URL that you are using')
+            elif resp.status_code == 403:
+                raise VultrError('Invalid or missing API key. Check that your API key is present and matches your assigned key')
+            elif resp.status_code == 405:
+                raise VultrError('Invalid HTTP method. Check that the method (POST|GET) matches what the documentation indicates')
+            elif resp.status_code == 412:
+                raise VultrError('Request failed. Check the response body for a more detailed description. Body: \n' + resp.text)
+            elif resp.status_code == 500:
+                raise VultrError('Internal server error. Try again at a later time')
+            elif resp.status_code == 503:
+                raise VultrError('Rate limit hit. API requests are limited to an average of 1/s. Try your request again later.')
+
+        _elapsed = time.time() - _start
+        if _elapsed < self.req_duration:
+            time.sleep(self.req_duration - _elapsed)
+
+        return resp.json() if resp.text else {}
 
     def create_sub_class(self, class_name):
         setattr(self, class_name, Base(self.__session))
@@ -53,13 +84,13 @@ class Vultr(Base):
         }
         super().__init__(self.__session)
 
-        for method in build:
-            full_name = method
-            method_n_sub_class = method.split('.')
+        for method in BUILD:
+            full_method_name = method
+            subclass_n_method_loc = method.split('.')
             on_sub_class = self
-            while len(method_n_sub_class) != 1:
-                sub_class_name = method_n_sub_class.pop(0)
-                if not hasattr(on_sub_class, sub_class_name):
-                    on_sub_class = on_sub_class.create_sub_class(sub_class_name)
-            name = method_n_sub_class.pop(0)
-            setattr(on_sub_class, name, on_sub_class.create_method(name, build[full_name]))
+            while len(subclass_n_method_loc) != 1:
+                name = subclass_n_method_loc.pop(0)
+                if not hasattr(on_sub_class, name):
+                    on_sub_class = on_sub_class.create_sub_class(name)
+            name = subclass_n_method_loc.pop(0)
+            setattr(on_sub_class, name, on_sub_class.create_method(name, BUILD[full_method_name]))
