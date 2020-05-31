@@ -96,7 +96,6 @@ class Vultr(Base):
         for method in BUILD:
             full_method_name = method
             subclass_n_method_loc = method.split('.')
-            s_ = method.split('.')
             on_sub_class = self
             while len(subclass_n_method_loc) != 1:
                 name = subclass_n_method_loc.pop(0)
