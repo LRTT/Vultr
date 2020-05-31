@@ -75,7 +75,7 @@ class Base(object):
             for key, value in kwargs.items():
                 param_info = ([param for param in method_info['params'] if key == param['name']]+[None])[0]
                 if param_info:
-                    assert isinstance(value, self.type_to_python(param_info['type'])), '%s must be %s, not' % (param_info['name'], param_info['type'], type(value).__name__)
+                    assert isinstance(value, self.type_to_python(param_info['type'])), '%s must be %s, not %s' % (param_info['name'], param_info['type'], type(value).__name__)
                     data[param_info['name']] = value
             for param in method_info['params']:
                 if param['required'] and param['name'] not in data:
