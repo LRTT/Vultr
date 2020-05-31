@@ -1,5 +1,13 @@
 # VULTR
-| Method | Description |
+## Example
+```python
+from vultr import Vultr
+client = Vultr("API_KEY")
+print(client.account.info())
+```
+
+## Methods
+| Name | Description |
 |:--------------|:----------------------------------|
 | `account.info` | Retrieve information about the current account.
 | `app.list` | Retrieve a list of available applications. These refer to applications that can be launched when creating a Vultr VPS.
