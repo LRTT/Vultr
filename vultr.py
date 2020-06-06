@@ -1,27 +1,32 @@
 import requests
 import json
 import time
+import os
 
-BUILD = json.load(open("vultr.build.info.json", "r"))
+for path, _folders, files in os.walk(os.getcwd()):
+    for file in files:
+        if file == "vultr.build.json":
+            BUILD = json.load(open(os.path.join(path, file), "r"))
 
 class VultrError(RuntimeError):
     """ Vultr Exception """
 
 class Base(object):
-    # Ref https://raw.githubusercontent.com/spry-group/python-vultr/32b5d19b1b45db9ef96f0ddf4439df7a0acbd652/vultr/utils.py
-
     BASE_HOST = "https://api.vultr.com"
-    REQ_PER_SECOND = 1
+    REQ_PER_SECOND = 2
 
     def __init__(self, session):
         self.__session = session
+        self._last_req_time = 0
         # set the request/second at run-time
         self.req_duration = 1 / self.REQ_PER_SECOND
 
     def request(self, method, path, data):
         """ API request / call method """
-        _start = time.time()
-        
+        _start = time.time() - self._last_req_time
+        if _start < self.req_duration:
+            time.sleep(self.req_duration - _start)
+
         if not path.startswith("/"): path = "/" + path
         
         resp = getattr(self.__session, method)(self.BASE_HOST + path, data=data)
@@ -38,13 +43,11 @@ class Base(object):
             elif resp.status_code == 500:
                 raise VultrError('Internal server error. Try again at a later time')
             elif resp.status_code == 503:
-                raise VultrError('Rate limit hit. API requests are limited to an average of 1/s. Try your request again later.')
+                raise VultrError('Rate limit hit. API requests are limited to an average of 2/s. Try your request again later.')
             else:
                 raise VultrError(resp.text)
 
-        _elapsed = time.time() - _start
-        if _elapsed < self.req_duration:
-            time.sleep(self.req_duration - _elapsed)
+        self._last_req_time = time.time()
 
         return resp.json() if resp.text else {}
 
